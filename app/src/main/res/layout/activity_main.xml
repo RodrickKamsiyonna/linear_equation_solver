@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#c8e5e8"
+    tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/ads"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_height="wrap_content"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-1689035221911321/1767787634">
+    </com.google.android.gms.ads.AdView>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/ads"
+        android:elevation="5dp"
+        android:background="@drawable/button_shape"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/top_linear">
+
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plus"
+            android:onClick="addEquation"
+            android:textColor="@color/text_color"
+            android:background="@drawable/add_eq"
+            android:textSize="16sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/text_color"
+            android:background="@color/button_color"
+            android:text="@string/change_num"/>
+
+        <Button android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subtract"
+            android:onClick="removeLayout"
+            android:textColor="@color/text_color"
+            android:background="@drawable/sub_eq"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <!-- The LinearLayout for holding the inputs-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:id="@+id/input_holder1"
+        app:layout_constraintBottom_toTopOf="@+id/numbers_box"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:background="#c8E5e8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/top_linear"
+        app:layout_constraintVertical_bias="0.0" >
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:animateLayoutChanges="true"
+                android:layout_height="wrap_content"
+                android:id="@+id/input_holder">
+                <include layout="@layout/input_layout"/>
+                <include layout="@layout/input_layout"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <!-- The box holding the calculator buttons-->
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/numbers_box"
+        android:columnCount="4"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/grid_drawable"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button android:id="@+id/back"
+            android:layout_width="@dimen/button_width"
+            android:background="@drawable/button_shape"
+            android:layout_height="@dimen/button_height"
+            android:text="("
+            android:fontFamily="@font/roboto"
+            android:onClick="onClickNumber"
+            android:textColor="@color/text_color"
+            android:textSize="30sp" />
+        <Button android:id="@+id/forword"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:background="@drawable/button_shape"
+            android:textColor="@color/text_color"
+            android:text=")"
+            android:fontFamily="@font/roboto"
+            android:onClick="onClickNumber"
+            android:textSize="30sp"
+            />
+
+        <Button android:id="@+id/floating_point"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:background="@drawable/button_shape"
+            android:text="@string/point"
+            android:textSize="30sp"
+            android:fontFamily="@font/roboto"
+            android:onClick="onClickNumber"
+            android:textColor="@color/text_color"
+            />
+        <Button
+            android:id="@+id/subtract"
+            android:layout_width="@dimen/calculations_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/subtract"
+            android:onClick="onClickNumber"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/text_color"
+            android:background="@drawable/button_shape"
+            android:textSize="30sp" />
+
+        <Button android:id="@+id/nine"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:background="@drawable/button_shape"
+            android:text="@string/nine"
+            android:textSize="30sp"
+            android:fontFamily="@font/roboto"
+            android:onClick="onClickNumber"
+            android:textColor="@color/text_color"
+            />
+        <Button android:id="@+id/eight"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/eight"
+            android:textSize="30sp"
+            android:fontFamily="@font/roboto"
+            android:onClick="onClickNumber"
+            android:textColor="@color/text_color"
+            android:background="@drawable/button_shape"
+            />
+        <Button android:id="@+id/seven"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/seven"
+            android:textSize="30sp"
+            android:fontFamily="@font/roboto"
+            android:onClick="onClickNumber"
+            android:textColor="@color/text_color"
+            android:background="@drawable/button_shape"
+            />
+
+        <Button
+            android:id="@+id/plus"
+            android:layout_width="@dimen/calculations_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/plus"
+            android:onClick="onClickNumber"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/text_color"
+            android:background="@drawable/button_shape"
+            android:textSize="30sp" />
+
+        <Button android:id="@+id/six"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/six"
+            android:background="@drawable/button_shape"
+            android:textSize="30sp"
+            android:fontFamily="@font/roboto"
+            android:onClick="onClickNumber"
+            android:textColor="@color/text_color"
+            />
+        <Button android:id="@+id/five"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/five"
+            android:textColor="@color/text_color"
+            android:background="@drawable/button_shape"
+            android:textSize="30sp"
+            android:fontFamily="@font/roboto"
+            android:onClick="onClickNumber"
+            />
+        <Button android:id="@+id/four"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/four"
+            android:textSize="30sp"
+            android:fontFamily="@font/roboto"
+            android:onClick="onClickNumber"
+            android:textColor="@color/text_color"
+            android:background="@drawable/button_shape"
+            />
+
+        <Button
+            android:id="@+id/divide"
+            android:layout_width="@dimen/calculations_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/divide"
+            android:fontFamily="@font/roboto"
+            android:onClick="onClickNumber"
+            android:textColor="@color/text_color"
+            android:background="@drawable/button_shape"
+            android:textSize="30sp" />
+
+        <Button android:id="@+id/three"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/three"
+            android:textSize="30sp"
+            android:onClick="onClickNumber"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/text_color"
+            android:background="@drawable/button_shape"
+            />
+        <Button android:id="@+id/two"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/two"
+            android:textSize="30sp"
+            android:fontFamily="@font/roboto"
+            android:onClick="onClickNumber"
+            android:textColor="@color/text_color"
+            android:background="@drawable/button_shape"
+            />
+        <Button
+            android:id="@+id/one"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/one"
+            android:textSize="30sp"
+            android:fontFamily="@font/roboto"
+            android:onClick="onClickNumber"
+            android:textColor="@color/text_color"
+            android:background="@drawable/button_shape"
+            />
+
+        <Button
+            android:id="@+id/multiply"
+            android:layout_width="@dimen/calculations_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/multiply"
+            android:onClick="onClickNumber"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/text_color"
+            android:background="@drawable/button_shape"
+            android:textSize="30sp"/>
+
+        <Button
+            android:id="@+id/camma"
+            android:layout_width="@dimen/button_width"
+            android:background="@drawable/button_shape"
+            android:text=","
+            android:fontFamily="@font/roboto"
+            android:onClick="onClickNumber"
+            android:textColor="@color/text_color"
+            android:layout_height="@dimen/button_height"
+            android:textSize="30sp"/>
+
+        <Button
+            android:id="@+id/Del"
+            android:layout_width="@dimen/button_width"
+            android:background="@drawable/button_shape"
+            android:textSize="30sp"
+            android:fontFamily="@font/roboto"
+            android:onClick="onClickNumber"
+            android:textColor="@color/text_color"
+            android:text="@string/del"
+            android:layout_height="@dimen/button_height"/>
+
+        <Button
+            android:id="@+id/zero"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/button_height"
+            android:text="@string/zero"
+            android:fontFamily="@font/roboto"
+            android:onClick="onClickNumber"
+            android:textColor="@color/text_color"
+            android:background="@drawable/button_shape"
+            android:textSize="30sp"/>
+        <Button
+            android:id="@+id/equal"
+            android:layout_width="@dimen/calculations_width"
+            android:layout_height="@dimen/button_height"
+            android:text="="
+            android:fontFamily="@font/roboto"
+            android:onClick="onClickNumber"
+            android:textColor="@color/text_color"
+            android:background="@drawable/button_shape"
+            android:textSize="30sp"/>
+    </GridLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
